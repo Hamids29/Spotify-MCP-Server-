@@ -1,12 +1,14 @@
 {
-    "name": "spotify-mcp-server",
+    "name": "spotify-mcp",
     "version": "1.0.0",
-    "description": "Simple MCP server for testing Spotify Web API",
-    "main": "test.js",
     "type": "module",
+    "main": "server.js",
     "scripts": {
-      "start": "node test.js"
+        "start": "node server.js"
     },
-    "dependencies": {}
-  }
-  
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.18.1",
+        "dotenv": "^16.6.1",
+        "zod": "^3.25.76"
+    }
+}
