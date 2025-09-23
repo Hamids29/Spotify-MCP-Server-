@@ -4,6 +4,9 @@
 //   node server.js           # normal MCP server (uses env vars, NO stdout logs)
 
 import "dotenv/config"; //imports from our .env file
+import 'dotenv/config';
+console.log('Client ID:', JSON.stringify(process.env.SPOTIFY_CLIENT_ID));
+console.log('Redirect URI:', JSON.stringify(process.env.SPOTIFY_REDIRECT_URI));
 import http from "node:http";
 import { exec } from "node:child_process";
 import { writeFileSync, existsSync, appendFileSync } from "node:fs";
@@ -14,7 +17,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 
 // ---------- Config you can tweak ----------
-const REDIRECT_URI = "http://127.0.0.1:5173/callback";  // use 127.0.0.1 (not localhost)
+const REDIRECT_URI = "http://127.0.0.1:8888/callback";  // use 127.0.0.1 (not localhost)
 const SCOPES = [
   "user-top-read",
   "playlist-modify-private",
@@ -108,7 +111,8 @@ if (process.argv.includes("--setup")) {
   });
 
   server.listen(8888, () => {
-    console.log("Listening on http://127.0.0.1:5173/callback");
+    // BEFORE: console.log("Listening on http://127.0.0.1:5173/callback");
+    console.log("Listening on http://127.0.0.1:8888/callback");
     console.log("\nIf your browser doesn't open, open this URL:\n");
     console.log(AUTH_URL + "\n");
     try { exec(`open "${AUTH_URL}"`); } catch {}
