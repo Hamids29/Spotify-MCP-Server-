@@ -5,8 +5,8 @@
 
 import "dotenv/config"; //imports from our .env file
 import 'dotenv/config';
-console.log('Client ID:', JSON.stringify(process.env.SPOTIFY_CLIENT_ID));
-console.log('Redirect URI:', JSON.stringify(process.env.SPOTIFY_REDIRECT_URI));
+//console.log('Client ID:', JSON.stringify(process.env.SPOTIFY_CLIENT_ID));
+//console.log('Redirect URI:', JSON.stringify(process.env.SPOTIFY_REDIRECT_URI));
 import http from "node:http";
 import { exec } from "node:child_process";
 import { writeFileSync, existsSync, appendFileSync } from "node:fs";
@@ -36,6 +36,9 @@ if (process.argv.includes("--setup")) {
     process.exit(1);
   }
 
+  console.log("Client ID:", JSON.stringify(CLIENT_ID));
+  console.log("Redirect URI:", JSON.stringify(REDIRECT_URI));
+  
   const STATE = randomBytes(8).toString("hex");
   const AUTH_URL =
     "https://accounts.spotify.com/authorize" +
